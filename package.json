@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "mongoose": "^8.9.5"
+  },
+  "name": "express_development",
+  "version": "1.0.0",
+  "description": "backend development using javascript",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jiss devra",
+  "license": "ISC"
+}
