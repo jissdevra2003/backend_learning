@@ -7,18 +7,20 @@
 // This function takes another function called requestHandler as an argument
 const asyncHandler = (requestHandler) => {
   
-  // The asyncHandler function returns a new function
-  // This new function takes three arguments: req (request), res (response), and next (next middleware function)
-  return (req, res, next) => {
+// The asyncHandler function returns a new function
+// This new function takes three arguments: req (request), 
+//res (response), and next (next middleware function)
+
+return (req, res, next) => {
     
-    // Use Promise.resolve to create a promise from the requestHandler function
-    // Call requestHandler with the req, res, and next arguments
-    Promise
-      .resolve(requestHandler(req, res, next))
-      // If an error occurs in requestHandler, catch the error
-      // Call the next function with the error, passing it to the next middleware
-      .catch((err) => next(err));
-  };
+//Use Promise.resolve to create a promise from the requestHandler function
+//Call requestHandler with the req, res, and next arguments
+Promise
+.resolve(requestHandler(req, res, next))
+// If an error occurs in requestHandler, catch the error
+// Call the next function with the error, passing it to the next middleware
+.catch((err) => next(err));
+};
 };
 
 // Export the asyncHandler function so it can be imported and used in other files
@@ -27,7 +29,11 @@ export { asyncHandler };
 
 //***************short version********************** */
 // const asyncHandler=(requestHandler)=>{
-// (req,res,next)=>{
+// return (req,res,next)=>{
+
+//***********we use Promise.resolve() to create 
+//a promise from the requestHandler function********************
+
 // Promise
 // .resolve(requestHandler(req,res,next))
 // .catch((err)=>next(err))
