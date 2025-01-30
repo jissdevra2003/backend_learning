@@ -55,6 +55,7 @@ timestamps:true
 
 //encrypt the password before saving using 
 //the pre hook from mongoose
+//pre hook will be called before saving the password 
 userSchema.pre("save",function(next)
 {
 if(!this.isModified("password")) return next();

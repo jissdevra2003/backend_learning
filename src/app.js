@@ -37,7 +37,17 @@ app.use(express.static("public"));
 //perform CRUD operations on the cookies in user's browser
 app.use(cookieParser());
 
-// Export the app instance so it can be used in other parts of the application
+
+//routes import
+import userRouter from './routes/user.routes.js';
+
+
+//routes declaration
+app.use("/api/v1/users",userRouter);
+
+//http;//localhost:3000/api/v1/users/register
+
+
 export { app };
 
 
