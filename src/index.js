@@ -3,12 +3,17 @@ import connectDB from './db/index.js  ';
 import {app} from './app.js'
 
 dotenv.config({
-path:'./env'
+path:'./.env'
 })
 
-connectDB();
-app.listen(process.env.PORT || 3000,()=>{
-console.log(`Server running at port :${process.env.PORT}`);
+connectDB().then(()=>{
+//server activates and starts listening
+app.listen(process.env.PORT,()=>{
+console.log(`Server listening at port :${process.env.PORT}`);
+})
+})
+.catch((error)=>{
+console.log(`Unable to connect to database :${error}`);
 })
 
 

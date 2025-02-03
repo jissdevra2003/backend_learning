@@ -56,10 +56,10 @@ timestamps:true
 //encrypt the password before saving using 
 //the pre hook from mongoose
 //pre hook will be called before saving the password 
-userSchema.pre("save",function(next)
+userSchema.pre("save",async function(next)
 {
 if(!this.isModified("password")) return next();
-this.password=bcrypt.hash(this.password,10);
+this.password=await bcrypt.hash(this.password,10);
 next();
 })
 
@@ -131,4 +131,4 @@ expiresIn:process.env.REFRESH_TOKEN_EXPIRY
 
 //in mongodb this model 'User' will be saved with name
 // as (plural+lowercase) - users
-export const User=mongoose.model("User",userSchema)
+export const User=mongoose.model("User",userSchema);
