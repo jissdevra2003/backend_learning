@@ -1,15 +1,17 @@
-import { User } from "../models/user.model";
-import { asyncHandler } from "../utils/asyncHandler";
+import { User } from "../models/user.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
+import { ApiError } from "../utils/ApiError.js";
 
 
 //verify user token and add user to the req object ===> (req.user) 
-export const verifyJWT=asyncHandler(async (req,resizeBy,next)=>{
+export const verifyJWT=asyncHandler(async (req,res,next)=>{
 
 
 try {
   //custom token from user 
   //comes in req.header("Authorization":"Bearer <token_name>")
+//key:"Authorization"  value:"Bearer <token_name>"
   const token=req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ",""); 
   
   if(!token) throw new ApiError(400,"Invalid access token"); 
@@ -25,6 +27,7 @@ req.user=user;
 next();
 
 } catch (error) {
+throw new ApiError(400,"Invalid access token");
   
 }
 

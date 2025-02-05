@@ -31,4 +31,19 @@ return null;
 }
 }
 
+const deleteFromCloudinary=async (publicId)=>{
+try {
+if(!publicId) throw new ApiError(400,"public id not recieved to initiate deletion"); 
+const response=await cloudinary.uploader.destroy(publicId,{
+resource_type:"auto"
+});
+
+    
+} catch (error) {
+throw new ApiError(400,error.message);    
+}
+
+}
+
+
 export {uploadOnCloudinary}

@@ -45,6 +45,14 @@ required:[true,"Password is required"],  //custom error message, can be given wi
 },
 refreshToken:{
 type:String,
+},
+avatar_public_id:{
+type:String,
+required:true
+},
+coverImage_public_id:{
+type:String,
+required:true
 }
 },
 {
